@@ -17,3 +17,17 @@ post "/contacts" do
   @contact = Contact.create(params[:contact])
   redirect to("/contacts/#{@contact.id}")
 end
+
+get "/contacts/:id/edit" do
+  @contact = Contact.find(params[:id])
+
+  erb :"contacts/edit"
+end
+
+put "/contacts/:id" do
+  @contact = Contact.find(params[:id])
+
+  @contact.update(params[:contact])
+
+  redirect to("/contacts/#{@contact.id}")
+end
