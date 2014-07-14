@@ -7,3 +7,8 @@ get "/contacts/new" do
   @contact = Contact.new
   erb :"contacts/new"
 end
+
+get "/contacts/:id" do
+  @contact = Contact.find(params[:id])
+  erb :"contacts/show"
+end
