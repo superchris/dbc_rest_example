@@ -15,5 +15,5 @@ end
 
 post "/contacts" do
   @contact = Contact.create(params[:contact])
-  erb :"contacts/show"
+  redirect to("/contacts/#{@contact.id}")
 end
