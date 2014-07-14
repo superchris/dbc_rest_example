@@ -31,3 +31,11 @@ put "/contacts/:id" do
 
   redirect to("/contacts/#{@contact.id}")
 end
+
+delete '/contacts/:id' do
+  @contact = Contact.find(params[:id])
+
+  @contact.destroy
+
+  redirect to('/contacts')
+end
