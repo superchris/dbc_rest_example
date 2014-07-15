@@ -1,3 +1,4 @@
 class Contact < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :addresses
+  belongs_to :company
 end
