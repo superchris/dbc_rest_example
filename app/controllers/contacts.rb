@@ -15,12 +15,14 @@ end
 
 get "/contacts.json" do
   @contacts = Contact.all
+  content_type :json
   @contacts.to_json
 end
 
 post "/contacts" do
   @contact = Contact.create(params[:contact])
   if request.accept?("application/json")
+    content_type :json
     @contact.to_json
   else
     redirect to("/contacts/#{@contact.id}")

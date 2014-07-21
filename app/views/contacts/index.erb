@@ -2,6 +2,20 @@
   <h1>Contacts</h1>
   <div id="contacts">
   </div>
-  <input type="button" value="Create!" id="create-contact" />
-  <a href="/contacts/new">Create Contact</a>
+
+  <form id="new-contact-form">
+    <ul>
+      <li>
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" />
+      </li>
+      <li>
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email"  />
+      </li>
+      <li>
+        <input type="button" value="Create!" id="create-contact" />
+      </li>
+    </ul>
+  </form>
 </div>
