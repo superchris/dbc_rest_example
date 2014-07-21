@@ -13,6 +13,11 @@ get "/contacts/:id" do
   erb :"contacts/show"
 end
 
+get "/contacts.json" do
+  @contacts = Contact.all
+  @contacts.to_json
+end
+
 post "/contacts" do
   @contact = Contact.create(params[:contact])
   redirect to("/contacts/#{@contact.id}")
