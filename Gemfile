@@ -25,3 +25,7 @@ group :test do
   gem 'factory_girl'
   gem 'faker'
 end
+
+gem 'pry'
+gem 'mechanize'
+gem 'octokit'
