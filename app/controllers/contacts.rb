@@ -20,7 +20,11 @@ end
 
 post "/contacts" do
   @contact = Contact.create(params[:contact])
-  redirect to("/contacts/#{@contact.id}")
+  if request.accept?("application/json")
+    @contact.to_json
+  else
+    redirect to("/contacts/#{@contact.id}")
+  end
 end
 
 get "/contacts/:id/edit" do
