@@ -10,7 +10,7 @@ class ContactAssociations < ActiveRecord::Migration
     end
 
     change_table :contacts do |t|
-      t.belongs_to :company
+      t.integer :foodly_id
     end
 
   end
