@@ -2,7 +2,7 @@ class Contact < ActiveRecord::Base
   has_many :addresses, as: :addressable
   belongs_to :company, foreign_key: "foodly_id"
 
-  belongs_to :boss
+  belongs_to :boss, class_name: "Contact"
 
   def self.only_gary
     where(name: "Gary")
