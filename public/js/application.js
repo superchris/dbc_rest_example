@@ -6,21 +6,32 @@ function displayContact(contact) {
 };
 
 $(document).ready(function() {
-  $.getJSON("/contacts.json", function(contacts) {
-    for(var i=0; i < contacts.length; i++) {
-      var contact = contacts[i];
-      displayContact(contact);
+  $.ajax({
+    url: "/contacts",
+    success: function(contacts) {
+      for(var i=0; i < contacts.length; i++) {
+        var contact = contacts[i];
+        displayContact(contact);
+      }
     }
   });
+  // $.getJSON("/contacts.json",
+  // });
 
   $("#create-contact").click(function() {
     var newContact = {
       name: $("#name").val(),
       email: $("#email").val()
     };
-    $.post("/contacts", { contact: newContact }, function(contact) {
-      console.log(contact);
-      displayContact(contact);
+    var params = { contact: newContact };
+    $.ajax({
+      url: "/contacts",
+      data: params,
+      type: "POST",
+      success: function(contact) {
+        console.log(contact);
+        displayContact(contact);
+      }
     });
   });
 });

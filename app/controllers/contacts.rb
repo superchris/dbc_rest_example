@@ -1,6 +1,11 @@
 get "/contacts" do
   @contacts = Contact.all
-  erb :"contacts/index"
+  if request.xhr?
+    content_type :json
+    @contacts.to_json
+  else
+    erb :"contacts/index"
+  end
 end
 
 get "/contacts/new" do
@@ -13,17 +18,11 @@ get "/contacts/:id" do
   erb :"contacts/show"
 end
 
-get "/contacts.json" do
-  @contacts = Contact.all
-  content_type :json
-  @contacts.to_json
-end
-
 post "/contacts" do
   @contact = Contact.create(params[:contact])
-  if request.accept?("application/json")
+  if request.xhr?
     content_type :json
-    @contact.to_json
+    {foo: "bar"}.to_json
   else
     redirect to("/contacts/#{@contact.id}")
   end
