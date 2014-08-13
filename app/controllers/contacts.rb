@@ -22,7 +22,7 @@ post "/contacts" do
   @contact = Contact.create(params[:contact])
   if request.xhr?
     content_type :json
-    {foo: "bar"}.to_json
+    @contact.to_json
   else
     redirect to("/contacts/#{@contact.id}")
   end
